@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{ if (User.IsInRole("Administrador"))
+    {
+    <div class="text-center welcome-page">
+        <img src="~/img/LOGO-ElBuenSabor.png" alt="Logo de El Buen Sabor" height="250" width="250" style="display: inline-block; margin-bottom: 30px;" /><br />
+        <h1 class="display-3">Bienvenido Admnistrador!</h1>
+    </div>
+    }
+    else if (User.IsInRole("Cajero"))
+    {
+    <div class="text-center welcome-page">
+        <img src="~/img/LOGO-ElBuenSabor.png" alt="Logo de El Buen Sabor" height="250" width="250" style="display: inline-block; margin-bottom: 30px;"/><br />
+        <h1 class="display-3">Bienvenido Cajero!</h1>
+    </div>
+    }
+    else if (User.IsInRole("Cocinero"))
+    {
+    <div class="text-center welcome-page">
+        <img src="~/img/LOGO-ElBuenSabor.png" alt="Logo de El Buen Sabor" height="250" width="250" style="display: inline-block; margin-bottom: 30px;" /><br />
+        <h1 class="display-3">Bienvenido Cocinero!</h1>
+    </div>
+    }
+    else if (User.IsInRole("Cliente"))
+    {
+    <div class="text-center welcome-page">
+        <img src="~/img/LOGO-ElBuenSabor.png" alt="Logo de El Buen Sabor" height="250" width="250" style="display: inline-block; margin-bottom: 30px;" /><br />
+        <div class="my-auto">
+            <h1 class="display-3">Bienvenido @User.Identity.Name!</h1>
+            <p class="lead">
+                <a class="btn btn-danger my-2 my-sm-0 btn-lg" asp-area="" asp-controller="Cliente" asp-action="Index">Ordenar</a>
+            </p>
+        </div>
+    </div>
+    }
+    else
+    {
+    <div class="text-center welcome-page">
+        <img src="~/img/LOGO-ElBuenSabor.png" alt="Logo de El Buen Sabor" height="250" width="250" style="display: inline-block; margin-bottom: 30px;"/><br />
+        <a class="btn btn-danger my-2 my-sm-0" asp-area="Identity" asp-page="/Account/Login" style="margin-right: 10px;">Ingresar</a>
+        <a class="btn btn-danger my-2 my-sm-0" asp-area="Identity" asp-page="/Account/Register">Registro</a>
+    </div>
+    }
+}
+
+
+
+

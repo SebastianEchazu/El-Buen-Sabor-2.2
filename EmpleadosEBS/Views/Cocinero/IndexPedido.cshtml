@@ -1,0 +1,54 @@
+﻿@model EmpleadosEBS.Models.PedidoIndexData.PedidoIndexData
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutCocinero.cshtml";
+}
+<div class="jumbotron" style="margin-top: 40px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Numero de Pedido
+                </th>
+                <th>
+                    Detalle de Pedido
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Pedidos)
+            {
+                if (item.EstadoPedido.Descripcion == "Aceptado")
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumeroPedido)
+                        </td>
+                        <td>
+
+                            @{
+                                foreach (var Plato in item.DetPedidos)
+                                {
+                                    if (Plato.PlatoID.HasValue)
+                                    {
+
+                                        @Plato.Cantidad @: -
+
+                                        @Plato.Plato.Denominacion
+                                    }
+                                }
+                            }
+
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-success" asp-action="EditPedido" asp-route-id="@item.ID">Confirmar</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

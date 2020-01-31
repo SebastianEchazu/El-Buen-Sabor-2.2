@@ -1,0 +1,144 @@
+﻿@model EmpleadosEBS.Models.Factura
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Factura nro @Html.DisplayFor(model => model.Pedido.NumeroPedido)  </title>
+    
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="jumbotron">
+        <div id="invoice">
+            <div class="invoice overflow-auto">
+                <div style="min-width: 600px">
+                    <header>
+                        <div class="row">
+                            <div class="col">
+                                <img src="~/img/LOGO-ElBuenSabor.png" width="200" data-holder-rendered="true" />
+                            </div>
+                            <div class="col company-details">
+                                <h2 class="name">
+                                    El BUEN SABOR
+                                </h2>
+                                <div> Avenida Siempreviva 742,</div>
+                                <div>(123) 456-789</div>
+                                <div>clientes@elbuensabor.com</div>
+                            </div>
+                        </div>
+                    </header>
+                    <main>
+                        <div class="row contacts">
+                            <div class="col invoice-to">
+                                <div class="text-gray-light">Cliente:</div>
+                                <h2 class="to"> @Html.DisplayFor(model => model.Usuario.UserName)</h2>
+                                <div class="email">@Html.DisplayFor(model => model.Usuario.Email)</div>
+                            </div>
+                            <div class="col invoice-details">
+                                <h1 class="invoice-id">Factura nro @Html.DisplayFor(model => model.Pedido.NumeroPedido)</h1>
+                                <div class="date">Fecha de la Factura: @Html.DisplayFor(model => model.Pedido.FechaHora)</div>
+                            </div>
+                        </div>
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th>Cantidad</th>
+                                    <th class="text-left">DETALLE</th>
+
+                                    <th class="text-right">TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var det in Model.DetPedidos)
+                                {
+                                    if (det.PlatoID.HasValue)
+                                    {
+                                        <tr>
+                                            <td class="no">@det.Cantidad</td>
+                                            <td class="text-left">
+                                                @det.Plato.Denominacion
+                                            </td>
+
+                                            <td class="total">
+                                                @{
+                                                    double totalplato = 0;
+                                                    totalplato = det.PrecioPlato * det.Cantidad;
+                                                }
+                                                @totalplato
+                                            </td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td class="no">@det.Cantidad</td>
+                                            <td class="text-left">
+                                                @det.Articulo.Denominacion
+                                            </td>
+                                            <td class="total">
+                                                @{
+                                                    double totalarticulo = 0;
+                                                    totalarticulo = det.PrecioArticulo * det.Cantidad;
+                                                }
+                                                @totalarticulo
+
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">SUBTOTAL</td>
+                                    <td>@Html.DisplayFor(model => model.Pedido.PrecioVenta)</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Descuento Sin Envio 10%</td>
+                                    <td>
+                                        @{
+                                            double descuento = 0;
+                                            if (Model.Pedido.PorDelivery == true)
+                                            {
+                                                descuento = Model.Pedido.PrecioVenta * 0.1;
+                                            }
+
+                                        }
+                                        <p>@descuento</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">TOTAL FINAL</td>
+                                    <td>
+                                        @{
+                                            double final = 0;
+
+                                            final = Model.Pedido.PrecioVenta - descuento;
+
+                                        }
+                                        <p>@final</p>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="notices">
+                            <div>Aviso:</div>
+                            <div class="notice">Descuento Por Envio 10%.</div>
+                        </div>
+
+                    </main>
+                </div>
+                <div></div>
+            </div>
+            <br />
+
+        </div>
+    </div>
+</body>
+</html>

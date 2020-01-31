@@ -1,0 +1,144 @@
+﻿@model EmpleadosEBS.Models.Factura
+
+@{
+    ViewData["Title"] = "IndexInformes";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="jumbotron" style="margin-top: 40px;">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#Platos">Platos mas vendidos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#ingresos">Ingresos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#pedido1">Pedidos por tiempo</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#pedido2">Pedido por cliente</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#Clientes">Clientes</a>
+        </li>
+    </ul>
+    <!------------------contenido de los tabs----------------------------->
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active show" id="Platos">
+            <h3>Platos</h3>
+            <div>
+                @await Component.InvokeAsync("InformePlato", null)
+            </div>
+        </div>
+        <!-------------------------informe de ingresos por tiempo-------------------------->
+        <div class="tab-pane fade" id="ingresos">
+            <div class="container">
+                <form class="form-inline needs-validation" novalidate>
+                    <label for="inline-datetime-local">Desde: </label>
+                    <input type="datetime-local"
+                           class="form-control mb-2 mr-sm-2" id="fechaInicio">
+
+                    <label for="inline-datetime-local">Hasta: </label>
+                    <input type="datetime-local"
+                           class="form-control mb-2 mr-sm-2" id="fechaFinal">
+
+                    <input type="button" class="btn btn-primary mb-2" id="SolicitarIngresos"
+                           value="Solicitar" />
+                </form>
+
+                <div class="col-sm-10">
+                    <table class="table-active">
+                        <tr>
+                            <td>Dinero Ingresado en pesos </td>
+                            <td><text id="Resultado"></text></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--------------------informe de ingresos por Pedido por tiempo--------------------->
+        <div class="tab-pane fade" id="pedido1">
+            <div class="container">
+                <form class="form-inline needs-validation" novalidate>
+                    <label for="inline-datetime-local">Desde: </label>
+                    <input type="datetime-local"
+                           class="form-control mb-2 mr-sm-2" id="fechaInicio1">
+
+                    <label for="inline-datetime-local">Hasta: </label>
+                    <input type="datetime-local"
+                           class="form-control mb-2 mr-sm-2" id="fechaFinal1">
+
+                    <input type="button" class="btn btn-primary mb-2" id="SolicitarPedidos"
+                           value="Solicitar" />
+                </form>
+
+                <div class="col-sm-10">
+                    <table class="table-active">
+                        <tr>
+                            <td>Pedidos solicitados periodo tiempo </td>
+                            <td><text id="Resultado1"></text></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--------------------informe de ingresos por Pedido por Cliente-------------------->
+        <div class="tab-pane fade" id="pedido2">
+            <div class="container">
+                <form class="form-inline needs-validation" novalidate>
+
+                    <label for="inline-datetime-local">Desde: </label>
+                    <input type="datetime-local"
+                           class="form-control mb-2 mr-sm-2" id="fechaInicio2">
+
+                    <label for="inline-datetime-local">Hasta: </label>
+                    <input type="datetime-local"
+                           class="form-control mb-2 mr-sm-2" id="fechaFinal2">
+
+                    <label for="inline-datetime-local">Nombre del cliente: </label>
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="nombre">
+
+                    <input type="button" class="btn btn-primary mb-2" id="SolicitarPedidosCliente"
+                           value="Solicitar Pedidos" />
+                </form>
+
+                <div class="col-sm-10">
+                    <table class="table-active">
+                        <tr>
+                            <td>Pedidos solicitados del cliente</td>
+                            <td><text id="Resultado2"></text></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <!--------------------informe de ingresos por Pedido por tiempo--------------------->
+        <div class="tab-pane fade" id="Clientes">
+            <form class="form-inline needs-validation" novalidate>
+
+                <label for="inline-datetime-local">Desde: </label>
+                <input type="datetime-local"
+                       class="form-control mb-2 mr-sm-2" id="fechaInicio3">
+
+                <label for="inline-datetime-local">Hasta: </label>
+                <input type="datetime-local"
+                       class="form-control mb-2 mr-sm-2" id="fechaFinal3">
+
+                <input type="button" class="btn btn-primary mb-2" id="SolicitarRegistroClientes"
+                       value="Solicitar Clientes Registrados" />
+            </form>
+            <div class="col-sm-10">
+                <table class="table-active">
+                    <tr>
+                        <td>Clientes registrados en ese periodo de tiempo</td>
+                        <td><text id="Resultado3"></text></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------------------------------->
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/informe.js"></script>

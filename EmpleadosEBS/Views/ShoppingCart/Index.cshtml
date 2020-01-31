@@ -1,0 +1,68 @@
+﻿@model EmpleadosEBS.ViewModels.ShoppingCartViewModel
+
+<div class="row checkoutForm jumbotron" style="margin-top: 40px;">
+    <h2>Carrito de Compras</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Cantidad</th>
+                <th>Articulo</th>
+                <th class="text-right">Precio</th>
+                <th class="text-right">Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+            {
+                if (line.Plato != null)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <a class="btn btn-danger" asp-action="RemoveFromShoppingCartPlato" asp-route-id="@line.Plato.ID"><b>-</b></a>
+                            <b>@line.Cantidad</b>
+                            <a class="btn btn-danger" asp-action="AddToShoppingCartPlato" asp-route-id="@line.Plato.ID"><b>+</b></a>
+                        </td>
+      
+                        <td class="text-left">@line.Plato.Denominacion</td>
+                        <td class="text-right">@line.Plato.PrecioVenta.ToString("c")</td>
+                        <td class="text-right">
+                            @((line.Cantidad * line.Plato.PrecioVenta).ToString("c"))
+                        </td>
+                        <td class="text-center"><a class="fa fa-times-circle text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCartPlato" asp-route-ID="@line.Plato.ID"></a></td>
+                    </tr>
+                }
+                else if (line.Articulo != null)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <a class="btn btn-danger" asp-action="RemoveFromShoppingCart" asp-route-id="@line.Articulo.ID"><b>-</b></a>
+                            <b>@line.Cantidad</b>
+                            <a class="btn btn-danger" asp-action="AddToShoppingCart" asp-route-id="@line.Articulo.ID"><b>+</b></a>
+                        </td>
+                        <td class="text-left">@line.Articulo.Denominacion</td>
+                        <td class="text-right">@line.Articulo.PrecioVenta.ToString("c")</td>
+                        <td class="text-right">
+                            @((line.Cantidad * line.Articulo.PrecioVenta).ToString("c"))
+                        </td>
+                        <td class="text-center"><a class="fa fa-times-circle text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-ID="@line.Articulo.ID"></a></td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total:</td>
+                <td class="text-right">
+                    @Model.ShoppingCartTotal.ToString("c")
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <a class="btn btn-primary" asp-controller="Cliente" asp-action="Index">Agregar Mas</a>
+    <a class="btn btn-success ml-auto" asp-controller="Order" asp-action="Checkout">Pagar</a>
+        
+</div>

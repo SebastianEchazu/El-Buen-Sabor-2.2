@@ -1,0 +1,44 @@
+﻿@model EmpleadosEBS.Models.Articulo
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutCajero.cshtml";
+}
+<div class="jumbotron">
+    <h4>Insumos</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="EditInsumo">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ID" />
+                <div class="form-group">
+                    <label asp-for="Denominacion" class="control-label"></label>
+                    <input asp-for="Denominacion" class="form-control" />
+                    <span asp-validation-for="Denominacion" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="PrecioCompra" />
+                <input type="hidden" asp-for="PrecioVenta" />
+                <input type="hidden" asp-for="EsInsumo" />
+                <div class="form-group">
+                    <label asp-for="Stock" class="control-label"></label>
+                    <input asp-for="Stock" class="form-control" />
+                    <span asp-validation-for="Stock" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="UnidadMedida"/>
+                <input type="hidden" asp-for="Aprobado" />              
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-outline-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a  class="btn btn-outline-success" asp-action="IndexInsumo">Volver a la lista</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

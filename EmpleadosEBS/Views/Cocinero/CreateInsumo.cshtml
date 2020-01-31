@@ -1,0 +1,51 @@
+﻿@model EmpleadosEBS.Models.Articulo
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutCocinero.cshtml";
+}
+
+<div class="jumbotron">
+    <h4>Ingreso de Insumos</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CreateInsumo">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Denominacion" class="control-label"></label>
+                    <input asp-for="Denominacion" class="form-control" />
+                    <span asp-validation-for="Denominacion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PrecioCompra" class="control-label"></label>
+                    <input asp-for="PrecioCompra" class="form-control" />
+                    <span asp-validation-for="PrecioCompra" class="text-danger"></span>
+                </div>
+               
+                <div class="form-group">
+                    <label asp-for="Stock" class="control-label"></label>
+                    <input asp-for="Stock" class="form-control" />
+                    <span asp-validation-for="Stock" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UnidadMedida" class="control-label"></label>
+                    <input asp-for="UnidadMedida" class="form-control" />
+                    <span asp-validation-for="UnidadMedida" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <input type="submit" value="Enviar a Aprobar" class="btn btn-outline-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-outline-secondary" asp-action="IndexInsumo">Volver</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

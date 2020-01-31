@@ -1,0 +1,21 @@
+﻿@model Pedido
+
+
+    <div class="jumbotron" style="margin-top: 40px;">
+        <form asp-action="Checkout" method="post" class="form-horizontal" role="form">
+            <h1>Confirmacion y Pago</h1>
+            <hr />
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <p>Realizar el retiro de su pedido en el Local le otorga un descuento del <b>10%</b></p>
+            <div class="form-group">
+                <label asp-for="PorDelivery" class="control-label">No quiero el descuento del 10%. Quiero Delivery</label>
+                <input asp-for="PorDelivery" />
+                <span asp-validation-for="PorDelivery" class="text-danger"></span>
+            </div>
+            <input type="submit" class="btn btn-success" value="Completar Orden" />
+        </form>
+    </div>
+
+

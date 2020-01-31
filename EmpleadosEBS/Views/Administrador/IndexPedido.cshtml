@@ -1,0 +1,63 @@
+﻿@model EmpleadosEBS.ViewModels.PedidoUsuarioViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<!--agrande la hoja de estilos-->
+<style>
+    input[type="radio"],
+    input[type="checkbox"] {
+        box-sizing: border-box;
+        width: 20px;
+        height: 20px;
+    }
+</style>
+<div class="jumbotron">
+    <h3>Pedidos</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    usuario
+                </th>
+                <th>
+                    Delivery
+                </th>
+                <th>
+                    Fecha
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Estado del pedido
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Pedidos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PorDelivery)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaHora)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecioVenta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstadoPedido.Descripcion)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

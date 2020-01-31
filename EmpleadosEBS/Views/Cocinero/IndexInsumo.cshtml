@@ -1,0 +1,49 @@
+﻿@model IEnumerable<EmpleadosEBS.Models.Articulo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutCocinero.cshtml";
+}
+
+<div class="jumbotron" style="margin-top: 40px;">
+    <h3>Lista de Insumos</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Denominacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stock)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UnidadMedida)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Denominacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnidadMedida)
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-success" asp-action="EditInsumo" asp-route-id="@item.ID">Modificar stock</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        <a class="btn btn-outline-primary" asp-action="CreateInsumo">Ingresar Insumo</a>
+    </p>
+</div>

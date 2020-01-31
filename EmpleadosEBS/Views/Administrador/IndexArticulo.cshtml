@@ -1,0 +1,128 @@
+﻿@model IEnumerable<EmpleadosEBS.Models.Articulo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="jumbotron" style="margin-top: 40px;">
+    <div class="alert alert-dismissible alert-warning">
+        <h3>Articulos Pendientes</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Denominacion)
+                    </th>                 
+                    <th>
+                        @Html.DisplayNameFor(model => model.EsInsumo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Stock)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UnidadMedida)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+
+                {
+                    @if (!item.Aprobado)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Denominacion)
+                            </td>
+                           
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EsInsumo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Stock)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnidadMedida)
+                            </td>
+
+                            <td>
+                                <a class="btn btn-outline-info" asp-action="RevisarArticulo" asp-route-id="@item.ID">Revisar</a>
+                                <a class="btn btn-outline-danger" asp-action="DescartarArticulo" asp-route-id="@item.ID">Descartar</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="alert alert-dismissible alert-light">
+        <h3>Lista de Articulos</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Denominacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrecioCompra)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrecioVenta)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EsInsumo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Stock)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UnidadMedida)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+
+                {
+                    if (item.Aprobado)
+                    {
+
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Denominacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrecioCompra)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrecioVenta)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EsInsumo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Stock)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnidadMedida)
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-info" asp-action="EditArticulo" asp-route-id="@item.ID">Editar</a> 
+                                 <a class="btn btn-outline-danger" asp-action="DeleteArticulo" asp-route-id="@item.ID">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <p>
+        <a class="btn btn-outline-primary" asp-action="CreateArticulo">Ingresar Articulo</a>
+    </p>
+</div>

@@ -1,0 +1,84 @@
+﻿@model EmpleadosEBS.Models.PedidoIndexData.PedidoIndexData
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutCajero.cshtml";
+}
+<div class="jumbotron">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nro de Pedido
+                </th>
+
+                <th>
+                    Por Delivery
+                </th>
+                <th>
+                    FechaHora
+                </th>
+                <th>
+                    Detalle
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Pedidos)
+            {
+                if (item.EstadoPedido.Descripcion == "Solicitado" || item.EstadoPedido.Descripcion == "Cocinado")
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumeroPedido)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PorDelivery)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaHora)
+                        </td>
+                        <td>
+                            @{
+                                foreach (var Plato in item.DetPedidos)
+                                {
+                                    if (Plato.PlatoID.HasValue)
+                                    {
+
+                                        @Plato.Cantidad @: @Plato.Plato.Denominacion  <br />
+                                    }
+                                    if (Plato.ArticuloID.HasValue)
+                                    {
+                                        @Plato.Cantidad @: @Plato.Articulo.Denominacion <br />
+                                    }
+                                }
+                            }
+                        </td>
+                        <td>
+                            @if (item.EstadoPedido.Descripcion == "Solicitado")
+                            {
+                                <a class="btn btn-outline-success" asp-action="EditPedido" asp-route-id="@item.ID">Confirmar</a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-outline-success" asp-action="EntregarPedido" asp-route-id="@item.ID">Entregar</a>
+                                <a class="btn btn-outline-success" asp-action="FacturaPedido" asp-route-id="@item.ID">Factura</a>
+                                
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div id='myModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+
+</div>   

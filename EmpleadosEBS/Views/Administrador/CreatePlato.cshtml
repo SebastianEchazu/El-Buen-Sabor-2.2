@@ -1,0 +1,48 @@
+﻿@model EmpleadosEBS.Models.Plato
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="jumbotron">
+    <h4>Plato</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CreatePlato">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Denominacion" class="control-label"></label>
+                    <input asp-for="Denominacion" class="form-control" />
+                    <span asp-validation-for="Denominacion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descripcion" class="control-label"></label>
+                    <input asp-for="Descripcion" class="form-control" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PrecioVenta" class="control-label"></label>
+                    <input asp-for="PrecioVenta" class="form-control" />
+                    <span asp-validation-for="PrecioVenta" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Aprobado" /> @Html.DisplayNameFor(model => model.Aprobado)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Crear" class="btn btn-outline-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-outline-info" asp-action="IndexPlato">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

@@ -1,0 +1,38 @@
+﻿@model List<Plato>
+
+@{
+    var agrupacion = Model.GroupBy(x => x)
+                 .Select(g => new { Text = g.Key, Count = g
+                 .Count() })
+                 .ToList()
+                 .OrderByDescending(o => o.Count);
+}
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Denominacion
+                </th>
+                <th>
+                    Veces Vendido
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var plato in agrupacion)
+            {
+
+                <tr>
+                    <td>
+                        @plato.Text.Denominacion
+
+                    </td>
+                    <td>
+                        @plato.Count
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

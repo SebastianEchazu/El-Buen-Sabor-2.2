@@ -1,0 +1,22 @@
+﻿@{
+    if (User.IsInRole("Administrador"))
+    {
+    Layout = "_LayoutAdministrador";
+    }
+    else if (User.IsInRole("Cajero"))
+    {
+    Layout = "_LayoutCajero";
+    }
+    else if (User.IsInRole("Cocinero"))
+    {
+    Layout = "_LayoutCocinero";
+    }
+    else if (User.IsInRole("Cliente"))
+    {
+    Layout = "_LayoutCliente";
+    }
+    else
+    {
+    Layout = "_Layout";
+    }
+}

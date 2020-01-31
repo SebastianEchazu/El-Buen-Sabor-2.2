@@ -1,0 +1,143 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-EmpleadosEBS-67C91262-A518-415D-ABB3-33FF8A3649BB</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190529032304_initial.cs" />
+    <Compile Remove="Migrations\20190529032304_initial.Designer.cs" />
+    <Compile Remove="Migrations\20190529032654_initial.cs" />
+    <Compile Remove="Migrations\20190529032654_initial.Designer.cs" />
+    <Compile Remove="Migrations\20190529040118_initial.cs" />
+    <Compile Remove="Migrations\20190529040118_initial.Designer.cs" />
+    <Compile Remove="Migrations\20190529041452_initial.cs" />
+    <Compile Remove="Migrations\20190529041452_initial.Designer.cs" />
+    <Compile Remove="Migrations\20190529042341_initial.cs" />
+    <Compile Remove="Migrations\20190529042341_initial.Designer.cs" />
+    <Compile Remove="Migrations\20190529042925_initial.cs" />
+    <Compile Remove="Migrations\20190529042925_initial.Designer.cs" />
+    <Compile Remove="Migrations\20190529043520_initial.cs" />
+    <Compile Remove="Migrations\20190529043520_initial.Designer.cs" />
+    <Compile Remove="Migrations\20190529130154_Initial.cs" />
+    <Compile Remove="Migrations\20190529130154_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190529131635_Initial.cs" />
+    <Compile Remove="Migrations\20190529131635_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190529142519_Initial.cs" />
+    <Compile Remove="Migrations\20190529142519_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190529153000_initial.cs" />
+    <Compile Remove="Migrations\20190529153000_initial.Designer.cs" />
+    <Compile Remove="Migrations\20190530160546_identity.cs" />
+    <Compile Remove="Migrations\20190530160546_identity.Designer.cs" />
+    <Compile Remove="Migrations\20190530160851_identity.cs" />
+    <Compile Remove="Migrations\20190530160851_identity.Designer.cs" />
+    <Compile Remove="Migrations\20190602024554_initial.cs" />
+    <Compile Remove="Migrations\20190602024554_initial.Designer.cs" />
+    <Compile Remove="Migrations\20190602062739_inicial.cs" />
+    <Compile Remove="Migrations\20190602062739_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190602081738_inicial.cs" />
+    <Compile Remove="Migrations\20190602081738_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190602084153_inicial.cs" />
+    <Compile Remove="Migrations\20190602084153_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190602090550_inicial1.cs" />
+    <Compile Remove="Migrations\20190602090550_inicial1.Designer.cs" />
+    <Compile Remove="Migrations\20190602091628_inicial2.cs" />
+    <Compile Remove="Migrations\20190602091628_inicial2.Designer.cs" />
+    <Compile Remove="Migrations\20190603132845_initial.cs" />
+    <Compile Remove="Migrations\20190603132845_initial.Designer.cs" />
+    <Compile Remove="Migrations\20190604024750_inicial.cs" />
+    <Compile Remove="Migrations\20190604024750_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190604025726_initial.cs" />
+    <Compile Remove="Migrations\20190604025726_initial.Designer.cs" />
+    <Compile Remove="Migrations\20190604031319_inicial.cs" />
+    <Compile Remove="Migrations\20190604031319_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190605093109_inicial.cs" />
+    <Compile Remove="Migrations\20190605093109_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190605093554_inicial.cs" />
+    <Compile Remove="Migrations\20190605093554_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190606042016_inicial.cs" />
+    <Compile Remove="Migrations\20190606042016_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190811183419_Plato-Agregado-Descripcion-Imagen-Campos.cs" />
+    <Compile Remove="Migrations\20190811183419_Plato-Agregado-Descripcion-Imagen-Campos.Designer.cs" />
+    <Compile Remove="Migrations\20190812213251_inicial.cs" />
+    <Compile Remove="Migrations\20190812213251_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190818163016_elimineComanda.cs" />
+    <Compile Remove="Migrations\20190818163016_elimineComanda.Designer.cs" />
+    <Compile Remove="Migrations\20190818200339_CartItem.cs" />
+    <Compile Remove="Migrations\20190818200339_CartItem.Designer.cs" />
+    <Compile Remove="Migrations\20190818211954_inicial.cs" />
+    <Compile Remove="Migrations\20190818211954_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190818234603_shoppingCart1.cs" />
+    <Compile Remove="Migrations\20190818234603_shoppingCart1.Designer.cs" />
+    <Compile Remove="Migrations\20190819214115_migration.cs" />
+    <Compile Remove="Migrations\20190819214115_migration.Designer.cs" />
+    <Compile Remove="Migrations\20190819214156_Inicial.cs" />
+    <Compile Remove="Migrations\20190819214156_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190820025850_Inicial.cs" />
+    <Compile Remove="Migrations\20190820025850_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190820225002_CamposNuevosDetPedidoyPedido.cs" />
+    <Compile Remove="Migrations\20190820225002_CamposNuevosDetPedidoyPedido.Designer.cs" />
+    <Compile Remove="Migrations\20190821015842_Agregar-precioPlato-detPedido.cs" />
+    <Compile Remove="Migrations\20190821015842_Agregar-precioPlato-detPedido.Designer.cs" />
+    <Compile Remove="Migrations\20190823003620_CambioCampos-DetPedido.cs" />
+    <Compile Remove="Migrations\20190823003620_CambioCampos-DetPedido.Designer.cs" />
+    <Compile Remove="Migrations\20190823010305_CambioCampos-DetPedidos2.cs" />
+    <Compile Remove="Migrations\20190823010305_CambioCampos-DetPedidos2.Designer.cs" />
+    <Compile Remove="Migrations\20190823014755_AgregueCamposFaltantesDetPedido.cs" />
+    <Compile Remove="Migrations\20190823014755_AgregueCamposFaltantesDetPedido.Designer.cs" />
+    <Compile Remove="Migrations\20190823094348_Inicial.cs" />
+    <Compile Remove="Migrations\20190823094348_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190823214627_Autoincremental_NumeroPedido.cs" />
+    <Compile Remove="Migrations\20190823214627_Autoincremental_NumeroPedido.Designer.cs" />
+    <Compile Remove="Migrations\20190823214929_Inicial.cs" />
+    <Compile Remove="Migrations\20190823214929_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190823215415_Inicial.cs" />
+    <Compile Remove="Migrations\20190823215415_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190823220420_Inicial.cs" />
+    <Compile Remove="Migrations\20190823220420_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190823223037_Inicial.cs" />
+    <Compile Remove="Migrations\20190823223037_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190823223405_Inicial.cs" />
+    <Compile Remove="Migrations\20190823223405_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190823223940_Inicial.cs" />
+    <Compile Remove="Migrations\20190823223940_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\20190911141749_NuevaBaseDatos.cs" />
+    <Compile Remove="Migrations\20190911141749_NuevaBaseDatos.Designer.cs" />
+    <Compile Remove="Migrations\20190923183909_cartitem.cs" />
+    <Compile Remove="Migrations\20190923183909_cartitem.Designer.cs" />
+    <Compile Remove="Migrations\20190923185610_carrito.cs" />
+    <Compile Remove="Migrations\20190923185610_carrito.Designer.cs" />
+    <Compile Remove="Migrations\20191006160547_agregue-usuario-a-pedido.cs" />
+    <Compile Remove="Migrations\20191006160547_agregue-usuario-a-pedido.Designer.cs" />
+    <Compile Remove="Migrations\20191104014318_CustomUserData.cs" />
+    <Compile Remove="Migrations\20191104014318_CustomUserData.Designer.cs" />
+    <Compile Remove="Migrations\20191104014759_CustomUserData.cs" />
+    <Compile Remove="Migrations\20191104014759_CustomUserData.Designer.cs" />
+    <Compile Remove="Migrations\20191104092918_Usuario-Personalizado.cs" />
+    <Compile Remove="Migrations\20191104092918_Usuario-Personalizado.Designer.cs" />
+    <Compile Remove="Migrations\20191105064330_UsuarioConRegistro.cs" />
+    <Compile Remove="Migrations\20191105064330_UsuarioConRegistro.Designer.cs" />
+    <Compile Remove="Migrations\20191105093648_usuarioCampoRegistro.cs" />
+    <Compile Remove="Migrations\20191105093648_usuarioCampoRegistro.Designer.cs" />
+    <Compile Remove="Migrations\20191105130849_UsuarioPersonalizado.cs" />
+    <Compile Remove="Migrations\20191105130849_UsuarioPersonalizado.Designer.cs" />
+    <Compile Remove="Migrations\20191105131041_UsuarioPersonalizado.cs" />
+    <Compile Remove="Migrations\20191105131041_UsuarioPersonalizado.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Rotativa\Windows\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\Windows\wkhtmltopdf.exe" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.1.1" />
+  </ItemGroup>
+
+</Project>

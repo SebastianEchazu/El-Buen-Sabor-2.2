@@ -1,0 +1,62 @@
+﻿@model EmpleadosEBS.Models.Pedido
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutCocinero.cshtml";
+}
+<div class="jumbotron">
+    <h4>Pedido</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="EditPedido">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="FechaHora" />
+                <input type="hidden" asp-for="ID" />
+                <input type="hidden" asp-for="EstadoPedidoID" />
+                <input type="hidden" asp-for="PorDelivery" />
+                <div class="form-group">
+                    <label asp-for="NumeroPedido" class="control-label"></label>
+                    <input asp-for="NumeroPedido" class="form-control" readonly="readonly" />
+                    
+                </div>
+                <input type="hidden" asp-for="PrecioVenta" />
+                <input type="hidden" asp-for="UserId" />
+
+                <table>
+                    <tr>
+                        @{
+                            <!--MUESTRA DE PLATOS ASIGNADOS A UN PEDIDO-->
+                            foreach (var platos in Model.DetPedidos)
+                            {
+                                if (platos.PlatoID.HasValue)
+                                {
+                                    <td width="30">
+                                        @platos.Cantidad -
+                                    </td>
+                                    <td>
+                                        @platos.Plato.Denominacion 
+                                    </td>
+                                   
+                                }
+                            }
+                        @:</tr>
+                        }
+                    </table>
+                    <hr />
+
+                    <div class="form-group">
+                        <input type="submit" value="Cocinado" class="btn btn-outline-success" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a class="btn btn-outline-info" asp-action="IndexPedido">Volver a la Lista</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    </div>

@@ -1,0 +1,38 @@
+﻿@model EmpleadosEBS.Models.Plato
+
+@{
+    ViewData["Title"] = "Descartar";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="jumbotron">
+    <h3>Esta Seguro que desea Descartar Este plato?</h3>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Denominacion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Denominacion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PrecioVenta)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PrecioVenta)
+            </dd>
+        </dl>
+
+        <form asp-action="DescartarPlato">
+            <input type="hidden" asp-for="ID" />
+            <input type="submit" value="Descartar" class="btn btn-danger" /> 
+            <a class="btn btn-outline-info" asp-action="IndexPlato">Volver a la Lista</a>
+        </form>
+    </div>
+</div>

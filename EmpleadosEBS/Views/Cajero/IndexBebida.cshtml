@@ -1,0 +1,61 @@
+﻿@model IEnumerable<EmpleadosEBS.Models.Articulo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutCajero.cshtml";
+}
+<div class="jumbotron">
+    <h3>Lista de Bebidas</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Denominacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrecioCompra)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrecioVenta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stock)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UnidadMedida)
+                </th>              
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Denominacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecioCompra)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecioVenta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnidadMedida)
+                    </td>                  
+                    <td>
+                        <a  class="btn btn-outline-success" asp-action="EditBebida" asp-route-id="@item.ID">Modificar stock</a> 
+                     
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        <a class="btn btn-outline-primary"  asp-action="CreateBebida">Ingresar Bebida</a>
+    </p>
+</div>

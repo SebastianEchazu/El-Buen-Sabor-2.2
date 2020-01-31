@@ -1,0 +1,53 @@
+﻿@model EmpleadosEBS.Models.PlatoIndexData.PlatoIndexData
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutCocinero.cshtml";
+}
+
+<div class="jumbotron" style="margin-top: 40px;">
+    <h3> Lista de Platos   </h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nombre del Plato
+                </th>
+
+                <th>
+                    Receta
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Platos)
+            {
+                if (item.Aprobado)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Denominacion)
+                        </td>
+                        <td>
+                            @{
+                                foreach (var Articulo in item.Recetas)
+                                {
+                                    @Articulo.Cantidad @:
+                                    @Articulo.Articulo.UnidadMedida @:
+                                    @Articulo.Articulo.Denominacion; <br />
+                                }
+                            }
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-success" asp-action="EditPlato" asp-route-id="@item.ID">Editar</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <p>
+        <a class="btn btn-outline-primary" asp-action="CreatePlato">Ingresar Plato</a>
+    </p>
+</div>
